@@ -14,7 +14,7 @@ while True:
     req = client.recv(8192)
     res = 'HTTP/1.1 200 OK\r\n\r\n'
     try:
-        path = req.split(" ")[1].substring(1)
+        path = req.split(" ")[1][1:]
         res = res+path
     except Exception as e:
         res = res+str(e).replace('\n','<br>')
