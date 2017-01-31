@@ -17,5 +17,6 @@ HTTP/1.1 200 OK
 
 Hello, World!
 """
+    client_connection.sendall(request)
     client_connection.sendall(http_response)
     client_connection.close()
