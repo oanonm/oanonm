@@ -8,12 +8,13 @@ listen_socket.bind((HOST, PORT))
 listen_socket.listen(1)
 print 'Serving HTTP on port %s ...' % PORT
 while True:
-    client_connection, client_address = listen_socket.accept()
-    req = client_connection.recv(1024)
+    client, client_address = listen_socket.accept()
+    req = client.recv(1024)
     res = 'HTTP/1.1 200 OK\r\n\r\n'
     try:
         path = req.split(" ")[1]
         res = res+path
     except Exception as e:
-        res = res+str(e).replace('\n','<br>') client_connection.sendall(http_response+data)
-    client_connection.close()
+        res = res+str(e).replace('\n','<br>')
+    client.sendall(res+data)
+    client.close()
