@@ -1,6 +1,6 @@
 import socket,sys
 
-HOST, PORT = '', sys.argv[1]
+HOST, PORT = '', int(sys.argv[1])
 
 listen_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 listen_socket.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
