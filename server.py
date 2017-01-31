@@ -15,8 +15,7 @@ while True:
     http_response = """\
 HTTP/1.1 200 OK
 
-Hello, World!
+Hello, Worldz!
 """
-    client_connection.sendall(request)
     client_connection.sendall(http_response)
     client_connection.close()
