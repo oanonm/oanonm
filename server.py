@@ -16,5 +16,5 @@ while True:
         res = res+path
     except Exception as e:
         res = res+str(e).replace('\n','<br>')
-    client.sendall(res+data)
+    client.sendall(res)
     client.close()
