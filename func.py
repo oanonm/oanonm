@@ -1,7 +1,6 @@
 import os,psycopg2,urlparse
 import argparse
 import requests
-import pyquery
 
 def login(ss,em, pw):
     res = ss.get('https://m.facebook.com')
