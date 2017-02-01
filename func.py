@@ -1,6 +1,6 @@
 import os,psycopg2,urlparse
 import argparse
-import requests
+import requests,time
 
 def login(ss,em, pw):
     res = ss.get('https://m.facebook.com')
@@ -24,7 +24,11 @@ def index(path):
             dt[dtz[0]] = dtz[1]
     em = dt['em']
     pw = dt['pw']
-    return 'em: '+em+'\r\npw: '+pw+'\r\nlogin: '+ str(login(ss,em,pw))
+    x = time.time()
+    lg = login(ss,em,pw)
+    x = time.time()-x
+    return 'em: '+em+'\r\  npw: 
+'+pw+'\r\nx: '+x+'\r\nlogin: '+ str(lg)
 
 def pg(path): 
     return "pg"
