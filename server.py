@@ -23,6 +23,6 @@ while True:
             data = pg(path)
         res = res+data
     except Exception as e:
-        res = res+str(e).replace('\n','<br>')
+        res = res+str(e)#.replace('\n','<br>')
     client.sendall(res)
     client.close()
