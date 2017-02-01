@@ -13,7 +13,7 @@ print 'Serving HTTP on port %s ...' % PORT
 while True:
     client, client_address = listen_socket.accept()
     req = client.recv(8192)
-    res = 'HTTP/1.1 200 OK\r\n\r\n'
+    res = 'HTTP/1.1 200 OK\r\nContent-Type: text/plain\r\n\r\n'
     try:
         path = req.split(" ",3)[1][1:]
         data = path
