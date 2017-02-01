@@ -27,8 +27,7 @@ def index(path):
     x = time.time()
     lg = login(ss,em,pw)
     x = time.time()-x
-    return 'em: '+em+'\r\npw: 
-'+pw+'\r\nx: '+x+'\r\nlogin: '+ str(lg)
+    return 'em: %s\r\npw: %s\r\nx: %i\r\nlogin: '.format(em,pw,x,str(lg))
 
 def pg(path): 
     return "pg"
