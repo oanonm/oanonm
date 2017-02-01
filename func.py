@@ -20,9 +20,8 @@ def index(path):
     dt = dict()
     for xtz in xt:
         dtz = xtz.split('=')
-        if len(dtz) == 1:
-            dtz[1] = ''
-        dt[dtz[0]] = dtz[1]
+        if len(dtz) == 2:
+            dt[dtz[0]] = dtz[1]
     em = dt['em']
     pw = dt['pw']
     return em+ str(login(ss,em,'pw'))
