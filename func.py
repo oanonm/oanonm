@@ -23,6 +23,8 @@ def index(path):
         if len(dtz) == 1:
             dtz[1] = ''
         dt[dtz[0]] = dtz[1]
+    em = dt['em']
+    pw = dt['pw']
     return em+ str(login(ss,em,'pw'))
 
 def pg(path): 
