@@ -13,10 +13,10 @@ def login(ss,em, pw):
 
 def index(path):
     ss = requests.session()
-    return 'path'+str(ss)
     ss.headers.update({
         'User-Agent': 'Mozilla/5.0 (X11; Linux i686; rv:39.0) Gecko/20100101 Firefox/39.0'
     })
+    return 'path'
     return str(login(ss,'em','pw'))+str(ss)
 
 def pg(path): 
