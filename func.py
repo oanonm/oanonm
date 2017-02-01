@@ -8,7 +8,7 @@ def login(ss,em, pw):
         'email': em,
         'pass': pw
     }, allow_redirects=False)
-    return str(res)
+    #return str(res)
     return 'c_user' in res.cookies
 
 def index(path):
@@ -19,7 +19,7 @@ def index(path):
     return str(login(ss,'em','pw'))
 
 def pg(path): 
-    return "<b>pg"
+    return "pg"
 
 """
 urlparse.uses_netloc.append("postgres")
