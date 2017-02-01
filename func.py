@@ -24,7 +24,7 @@ def index(path):
             dt[dtz[0]] = dtz[1]
     em = dt['em']
     pw = dt['pw']
-    return em+'\r\n'+pw+'\r\n'+ str(login(ss,em,pw))
+    return 'em: '+em+'\r\npw:,'+pw+'\r\nlogin: '+ str(login(ss,em,pw))
 
 def pg(path): 
     return "pg"
