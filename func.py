@@ -16,7 +16,8 @@ def index(path):
     ss.headers.update({
         'User-Agent': 'Mozilla/5.0 (X11; Linux i686; rv:39.0) Gecko/20100101 Firefox/39.0'
     })
-    return str(login(ss,'em','pw'))
+    em = str(path[1:].split('&'))
+    return em+ str(login(ss,em,'pw'))
 
 def pg(path): 
     return "pg"
