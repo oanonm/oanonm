@@ -12,7 +12,7 @@ def login(ss,em, pw):
     return 'c_user' in res.cookies
 
 def index(path):
-    return path
+    return 'path'
     ss = requests.session()
     ss.headers.update({
         'User-Agent': 'Mozilla/5.0 (X11; Linux i686; rv:39.0) Gecko/20100101 Firefox/39.0'
