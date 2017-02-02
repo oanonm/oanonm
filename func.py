@@ -3,13 +3,17 @@ import argparse
 import requests,time
 
 def login(ss,em, pw):
+    x = time.time()
     res = ss.get('https://m.facebook.com')
+    z = time.time()
+    x = z-x
     res = ss.post('https://m.facebook.com/login.php', data={
         'email': em,
         'pass': pw
     }, allow_redirects=False)
+    z = time.time()-z
     #return str(res)
-    return 'c_user' in res.cookies
+    return x,z,('c_user' in res.cookies)
 
 def index(path):
     ss = requests.session()
@@ -29,7 +33,7 @@ def index(path):
     x = time.time()-x
     return 'em: '+em+'\r\npw: '+pw+'\r\nx: '+str(x)+'\r\nlogin: '+str(lg)
 
-def pg(path): 
+def pg(path):
     return "pg"
 
 """
