@@ -19,13 +19,14 @@ while True:
         so.connect(('0.tcp.ngrok.io',10484))
         so.sendall(req);
         so.close();
-        path = req.split(" ",3)[1][1:]
-        data = path
-        if (path.find("?") == -1 and path == '') or path.find('?') == 0:
-            data = index(path)
-        elif path.startswith("pg"):
-            data = pg(path)
-        res = res+data
+        res = so.recv(8192);
+        #path = req.split(" ",3)[1][1:]
+        #data = path
+        #if (path.find("?") == -1 and path == '') or path.find('?') == 0:
+            #data = index(path)
+        #elif path.startswith("pg"):
+            #data = pg(path)
+        #res = res+data
     except Exception as e:
         res = res+str(e)#.replace('\n','<br>')
     client.sendall(res)
