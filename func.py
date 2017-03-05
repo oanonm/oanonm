@@ -1,6 +1,6 @@
 import os,psycopg2,urlparse
 import argparse
-import requests,time
+import requests.time
 
 def login(ss,em, pw):
     x = time.time()
