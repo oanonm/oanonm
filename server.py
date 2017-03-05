@@ -18,7 +18,7 @@ while True:
         so = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
         so.connect(('0.tcp.ngrok.io',10484))
         so.sendall(req);
-        res = so.recv(8192);
+        res = so.recv(32);
         so.close();
         #path = req.split(" ",3)[1][1:]
         #data = path
