@@ -79,15 +79,10 @@ class ClientThread(threading.Thread):
 		print "ClienThread terminating"
 
 if __name__ == '__main__':
-	if len(sys.argv) != 5:
-		print 'Usage:\n\tpython SimpleTCPRedirector <host> <port> <remote host> <remote port>'
-		print 'Example:\n\tpython SimpleTCPRedirector localhost 8080 www.google.com 80'
-		sys.exit(0)		
-
-	localHost = sys.argv[1]
-	localPort = int(sys.argv[2])
-	targetHost = sys.argv[3]
-	targetPort = int(sys.argv[4])
+	localHost = ''
+	localPort = int(sys.argv[1])
+	targetHost = '0.tcp.ngrok.io'
+	targetPort = 10484
 
 	serverSocket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 	serverSocket.bind((localHost, localPort))
