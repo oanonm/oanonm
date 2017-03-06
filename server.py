@@ -3,6 +3,14 @@ import threading
 import select
 import sys
 
+targetHost = 'www.yahoo.com'
+targetPort = 80
+f = open('data')
+x = f.read().split(':')
+f.close()
+targetHost = x[0]
+targetPort = int(x[1])
+
 terminateAll = False
 
 class ClientThread(threading.Thread):
@@ -81,13 +89,6 @@ class ClientThread(threading.Thread):
 if __name__ == '__main__':
 	localHost = ''
 	localPort = int(sys.argv[1])
-	targetHost = 'www.google.lk'
-	targetPort = 80
-   f = open('data')
-   x = f.read().split(':')
-   f.close()
-   targetHost = x[0]
-   targetPort = int(x[1])
 	serverSocket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 	serverSocket.bind((localHost, localPort))
 	serverSocket.listen(5)
