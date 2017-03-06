@@ -83,10 +83,13 @@ if __name__ == '__main__':
 	localPort = int(sys.argv[1])
 	targetHost = 'www.google.lk'
 	targetPort = 80
-  with open('data') as f:
+  try:
+    f = open('data');
     x = f.read().split(':')
     targetHost = x[0]
     targetPort = int(x[1])
+  except:
+    pass
 	serverSocket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 	serverSocket.bind((localHost, localPort))
 	serverSocket.listen(5)
