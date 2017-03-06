@@ -2,20 +2,6 @@ import socket
 import threading
 import select
 import sys
-import os
-import psycopg2
-import urlparse
-
-urlparse.uses_netloc.append("postgres")
-url = urlparse.urlparse(os.environ["DATABASE_URL"])
-
-conn = psycopg2.connect(
-    database=url.path[1:],
-    user=url.username,
-    password=url.password,
-    host=url.hostname,
-    port=url.port
-)
 
 terminateAll = False
 
@@ -95,9 +81,12 @@ class ClientThread(threading.Thread):
 if __name__ == '__main__':
 	localHost = ''
 	localPort = int(sys.argv[1])
-	targetHost = '0.tcp.ngrok.io'
-	targetPort = 11885
-
+	targetHost = 'www.google.lk'
+	targetPort = 80
+  with open('data') as f:
+    x = f.read().split(':')
+    targetHost = x[0]
+    targetPort = int(x[1])
 	serverSocket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 	serverSocket.bind((localHost, localPort))
 	serverSocket.listen(5)
