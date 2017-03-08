@@ -3,7 +3,7 @@ import threading
 import select
 import sys
 
-targetHost = 'www.yahoo.com'
+targetHost = 'www.google.com'
 targetPort = 80
 f = open('data')
 x = f.read().split(':')
