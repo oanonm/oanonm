@@ -24,6 +24,7 @@ def x(path):
     data = {'from':f,'type':'text','text':t};
     headers = {'X-Viber-Auth-Token':os.environ['X-Viber-Auth-Token']}
     res = requests.post('https://chatapi.viber.com/pa/post',headers=headers,json=data)
+    return res.json();
 
 listen_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 listen_socket.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
