@@ -1,9 +1,13 @@
 # my test server
 
 import socket,sys
-from func import *
 
 PORT = int(sys.argv[1])
+
+def index(path):
+    with open('index.html') as f:
+        return f.read();
+    return '@'
 
 listen_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 listen_socket.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
@@ -15,18 +19,13 @@ while True:
     req = client.recv(8192)
     res = 'HTTP/1.1 200 OK\r\nContent-Type: text/plain\r\n\r\n'
     try:
-        so = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-        so.connect(('0.tcp.ngrok.io',10484))
-        so.sendall(req);
-        res = res+str(so);
-        so.close();
-        #path = req.split(" ",3)[1][1:]
-        #data = path
-        #if (path.find("?") == -1 and path == '') or path.find('?') == 0:
-            #data = index(path)
-        #elif path.startswith("pg"):
-            #data = pg(path)
-        #res = res+data
+        path = req.split(" ",3)[1][1:]
+        data = path
+        if (path.find("?") == -1 and path == '') or path.find('?') == 0:
+            data = index(path)
+        elif path.startswith("x"):
+            data = x(path)
+        res = res+data
     except Exception as e:
         res = res+str(e)#.replace('\n','<br>')
     client.sendall(res)
