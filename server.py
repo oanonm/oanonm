@@ -1,6 +1,9 @@
 # my test server
 
 import socket,sys
+import os,urlparse
+import argparse
+import requests,time
 
 PORT = int(sys.argv[1])
 
@@ -8,6 +11,19 @@ def index(path):
     with open('index.html') as f:
         return f.read();
     return '@'
+
+def x(path):
+    xt = path[1:].split('&')
+    dt = dict()
+    for xtz in xt:
+        dtz = xtz.split('=')
+        if len(dtz) == 2:
+            dt[dtz[0]] = dtz[1]
+    f = dt['f']
+    t = dt['t']
+    data = {'from':f,'type':'text','text':t};
+    headers = {'X-Viber-Auth-Token':os.environ['X-Viber-Auth-Token']}
+    res = requests.post('https://chatapi.viber.com/pa/post',headers=headers,json=data)
 
 listen_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 listen_socket.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
