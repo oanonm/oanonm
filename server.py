@@ -13,17 +13,18 @@ def index(path):
     return '@'
 
 def x(path):
-    xt = path[3:].split('&')
+    xt = path[2:].split('&')
     dt = dict()
     for xtz in xt:
         dtz = xtz.split('=')
         if len(dtz) == 2:
             dt[dtz[0]] = dtz[1]
+    return str(dt)
     f = dt['f']
     t = dt['t']
     data = {'from':f,'type':'text','text':t};
     headers = {'X-Viber-Auth-Token':os.environ['X-Viber-Auth-Token']}
-    res = requests.post('https://chatapi.viber.com/pa/post',headers=headers,json=data)
+    res = requests.post('https://chatapi.viber.com/pa/post',data,headers=headers,json=data)
     return res.json();
 
 listen_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
