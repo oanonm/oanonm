@@ -13,7 +13,7 @@ def index(path):
     return '@'
 
 def x(path):
-    xt = path[1:].split('&')
+    xt = path[3:].split('&')
     dt = dict()
     for xtz in xt:
         dtz = xtz.split('=')
