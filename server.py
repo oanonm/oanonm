@@ -22,11 +22,11 @@ def x(path):
     #return str(dt)
     f = dt['f']
     t = dt['t']
-    return t+f
-    data = {}
-    data['from'] = f;
+    #return t+f
+    dx = {}
+    x['from'] = f;
 #'from':str(f),'type':'text','text':str(t)};
-    return data
+    return dx
     headers =  {'X-Viber-Auth-Token':os.environ['X-Viber-Auth-Token']}
     return headers
     res = requests.post('https://chatapi.viber.com/pa/post',data=data,headers=headers,json=data)
