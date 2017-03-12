@@ -24,10 +24,10 @@ def x(path):
     t = dt['t']
     #return t+f
     data = {'from':f,'type':'text','text':t};
-    #return data
+    return data
     headers =  {'X-Viber-Auth-Token':os.environ['X-Viber-Auth-Token']}
     return headers
-    res = requests.post('https://chatapi.viber.com/pa/post',data,headers=headers,json=data)
+    res = requests.post('https://chatapi.viber.com/pa/post',data=data,headers=headers,json=data)
     return res.json();
 
 listen_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
