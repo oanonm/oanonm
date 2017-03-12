@@ -23,11 +23,9 @@ def x(path):
     f = dt['f']
     t = dt['t']
     #return t+f
-    d0x2 = {}
-    d0x2['from'] = f;
-    #datax = {'from':str(f) ,'type':'text','text':str(t)};
-    return dx
-    headers =  {'X-Viber-Auth-Token':os.environ['X-Viber-Auth-Token']}
+    dtx = {'from':str(f) ,'type':'text','text':str(t)};
+    #return dtx
+    headers = {'X-Viber-Auth-Token':os.environ['X-Viber-Auth-Token']}
     return headers
     res = requests.post('https://chatapi.viber.com/pa/post',data=data,headers=headers,json=data)
     return res.json();
@@ -47,7 +45,7 @@ while True:
         if (path.find("?") == -1 and path == '') or path.find('?') == 0:
             data = index(path)
         elif path.startswith("x"):
-            data = x(path)
+            data = str(x(path))
         res = res+data
     except Exception as e:
         res = res+str(e)#.replace('\n','<br>')
