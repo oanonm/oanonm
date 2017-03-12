@@ -37,15 +37,17 @@ print 'Serving HTTP on port %s ...' % PORT
 while True:
     client, client_address = listen_socket.accept()
     req = client.recv(8192)
-    res = 'HTTP/1.1 200 OK\r\nContent-Type: text/plain\r\n\r\n'
+    res = 'HTTP/1.1 200 OK\r\n'
     try:
         path = req.split(" ",3)[1][1:]
         data = path
         if (path.find("?") == -1 and path == '') or path.find('?') == 0:
             data = index(path)
+            res = res+'Content-Type: text/html\r\n'
         elif path.startswith("x"):
             data = str(x(path))
-        res = res+data
+            res = res+'Content-Type: text/plain\r\n'
+        res = res+'\r\n'+data
     except Exception as e:
         res = res+str(e)#.replace('\n','<br>')
     client.sendall(res)
