@@ -23,9 +23,9 @@ def x(path):
     f = dt['f']
     t = dt['t']
     #return t+f
-    dx = {}
-    x['from'] = f;
-#'from':str(f),'type':'text','text':str(t)};
+    #dx = {}
+    #dx['from'] = f;
+    dx = {'from':str(f) ,'type':'text','text':str(t)};
     return dx
     headers =  {'X-Viber-Auth-Token':os.environ['X-Viber-Auth-Token']}
     return headers
