@@ -3,7 +3,7 @@
 import socket,sys
 import os,urlparse
 import argparse
-import requests,time
+import requests,time,json
 
 PORT = int(sys.argv[1])
 
@@ -27,7 +27,7 @@ def x(path):
     #return dtx
     headers = {'X-Viber-Auth-Token':os.environ['X-Viber-Auth-Token']}
     #return headers
-    res = requests.post('https://chatapi.viber.com/pa/post',data=dtx,headers=headers,json=data)
+    res = requests.post('https://chatapi.viber.com/pa/post',data=json.dumps(dtx),headers=headers)
     return res.json();
 
 listen_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
