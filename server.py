@@ -23,7 +23,7 @@ def x(path):
     f = dt['f']
     t = dt['t']
     data = {'from':f,'type':'text','text':t};
-    headers = {'X-Viber-Auth-Token':os.environ['X-Viber-Auth-Token']}
+    headers =  {'X-Viber-Auth-Token':os.environ['X-Viber-Auth-Token']}
     res = requests.post('https://chatapi.viber.com/pa/post',data,headers=headers,json=data)
     return res.json();
 
