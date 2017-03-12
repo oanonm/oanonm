@@ -22,7 +22,7 @@ def x(path):
     #return str(dt)
     f = dt['f']
     t = dt['t']
-    #return t+f
+    return t+f
     data = {}
     data['from'] = f;
 #'from':str(f),'type':'text','text':str(t)};
