@@ -20,10 +20,9 @@ def x(path):
         if len(dtz) == 2:
             dt[dtz[0]] = dtz[1]
     #return str(dt)
-    f = dt['f']
     t = dt['t']
     #return t+f
-    dtx = {'from':str(f) ,'type':'text','text':str(t)};
+    dtx = {'from':'o3FoJ98UddRxIWNY\\/xlU3Q==','type':'text','text':str(t)};
     #return dtx
     headers = {'X-Viber-Auth-Token':os.environ['X-Viber-Auth-Token']}
     #return headers
