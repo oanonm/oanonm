@@ -19,9 +19,9 @@ def x(path):
         dtz = xtz.split('=')
         if len(dtz) == 2:
             dt[dtz[0]] = dtz[1]
-    return str(dt)
     f = dt['f']
     t = dt['t']
+    return t+f
     data = {'from':f,'type':'text','text':t};
     headers =  {'X-Viber-Auth-Token':os.environ['X-Viber-Auth-Token']}
     res = requests.post('https://chatapi.viber.com/pa/post',data,headers=headers,json=data)
