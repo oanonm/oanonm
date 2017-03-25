@@ -43,10 +43,10 @@ def webhook(req):
     for clie in clients:
         if clie.ws:
             try:
-                clie.client.sendall(req)
+                #clie.client.sendall(req)
             except:
                 pass
-    return ''
+    return 'null'
 def index(path):
     with open('index.html') as f:
         return f.read();
