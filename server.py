@@ -40,6 +40,7 @@ def handle(self,client,client_address):
     client.sendall(res)
     client.close()
 def webhook(req):
+    return '$'
     for clie in clients:
         if clie.ws:
             try:
