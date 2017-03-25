@@ -46,7 +46,7 @@ def x(path):
     #return str(dt)
     t = dt['t'].replace('+', ' ')
     #return t+f
-    dtx = {'receiver':'xPHRz\\/B\\/dcLfMYb4JMjc8g==','sender':{'name':'Nadeen@'+dt['f']},'type':'text','text':str(t)};
+    dtx = {'receiver':'xPHRz\\/B\\/dcLfMYb4JMjc8g==','sender':{'name':dt['f']},'type':'text','text':str(t)};
     #return dtx
     headers = {'X-Viber-Auth-Token':os.environ['X-Viber-Auth-Token']}
     #return headers
