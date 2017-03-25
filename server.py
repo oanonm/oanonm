@@ -46,7 +46,7 @@ def webhook(req):
     for clie in clients:
         if clie.ws:
             try:
-                clie.client.dat = req
+                clie.dat = req
             except:
                 pass
     return 'null'
