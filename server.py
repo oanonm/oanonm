@@ -7,6 +7,7 @@ import argparse
 import requests,time,json
 
 PORT = int(sys.argv[1])
+clients = []
 
 class Client(Thread):
     def __init__(self,cs,ca):
@@ -14,8 +15,8 @@ class Client(Thread):
         self.cs = cs
         self.ca = ca
     def run(self):
-        handle(self.cs,self.ca)
-def handle(client,client_address):
+        handle(self,self.cs,self.ca)
+def handle(self,client,client_address):
     req = client.recv(8192)
     res = 'HTTP/1.1 200 OK\r\n'
     try:
@@ -28,10 +29,24 @@ def handle(client,client_address):
             data = str(x(path))
             res = res+'Content-Type: text/plain\r\n'
         res = res+'\r\n'+data
+        elif path.startswith("ws"):
+            self.ws = true
+            return
+        elif path.startswith("wh"):
+            data = str(webhook(req))
+        res = res+'\r\n'+data
     except Exception as e:
         res = res+str(e)#.replace('\n','<br>')
     client.sendall(res)
     client.close()
+def webhook(req):
+    for clie in clients:
+        if clie.ws:
+            try:
+                clie.client.sendall(req)
+            except:
+                pass
+    return ''
 def index(path):
     with open('index.html') as f:
         return f.read();
@@ -61,4 +76,5 @@ print 'Serving HTTP on port %s ...' % PORT
 while True:
     client, client_address = listen_socket.accept()
     c = Client(client,client_address)
+    clients.push(c)
     c.start()
