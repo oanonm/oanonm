@@ -43,7 +43,7 @@ def webhook(req):
     for clie in clients:
         if clie.ws:
             try:
-                #clie.client.sendall(req)
+                pass #clie.client.sendall(req)
             except:
                 pass
     return 'null'
