@@ -15,6 +15,7 @@ class Client(Thread):
         Thread.__init__(self)
         self.cs = cs
         self.ca = ca
+        self.dat = None
     def run(self):
         handle(self,self.cs,self.ca)
 def handle(self,client,client_address):
@@ -30,8 +31,10 @@ def handle(self,client,client_address):
             data = str(x(path))
             res = res+'Content-Type: text/plain\r\n'
         elif path.startswith("ws"):
-            self.ws = true
-            sleep(30000);
+            clients.append(c)
+            while self.dat == None:
+                sleep(1000);
+            data = dat
         elif path.startswith("wh"):
             data = str(webhook(req))
         res = res+'\r\n'+data
@@ -40,11 +43,10 @@ def handle(self,client,client_address):
     client.sendall(res)
     client.close()
 def webhook(req):
-    return '$'
     for clie in clients:
         if clie.ws:
             try:
-                pass #clie.client.sendall(req)
+                clie.client.dat = req
             except:
                 pass
     return 'null'
@@ -77,5 +79,4 @@ print 'Serving HTTP on port %s ...' % PORT
 while True:
     client, client_address = listen_socket.accept()
     c = Client(client,client_address)
-    clients.append(c)
     c.start()
