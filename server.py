@@ -22,11 +22,11 @@ def x(path):
     #return str(dt)
     t = dt['t'].replace('+', ' ')
     #return t+f
-    dtx = {'from':'o3FoJ98UddRxIWNY\\/xlU3Q==','type':'text','text':str(t)};
+    dtx = {'receiver':'xPHRz\\/B\\/dcLfMYb4JMjc8g==','sender':{'name':'Nadeen'},'type':'text','text':str(t)};
     #return dtx
     headers = {'X-Viber-Auth-Token':os.environ['X-Viber-Auth-Token']}
     #return headers
-    res = requests.post('https://chatapi.viber.com/pa/post',data=json.dumps(dtx),headers=headers)
+    res = requests.post('https://chatapi.viber.com/pa/send_message',data=json.dumps(dtx),headers=headers)
     return res.json();
 
 listen_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
