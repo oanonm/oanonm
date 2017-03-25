@@ -75,5 +75,5 @@ print 'Serving HTTP on port %s ...' % PORT
 while True:
     client, client_address = listen_socket.accept()
     c = Client(client,client_address)
-    clients.add(c)
+    clients.append(c)
     c.start()
