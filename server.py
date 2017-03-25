@@ -1,17 +1,41 @@
 # my test server
 
 import socket,sys,urllib
+from threading import Thread
 import os,urlparse
 import argparse
 import requests,time,json
 
 PORT = int(sys.argv[1])
 
+class Client(Thread):
+    def __init__(self,cs,ca):
+        Thread.__init__(self)
+        self.cs = cs
+        self.ca = ca
+    def run(self):
+        handle(self.cs,self.ca)
+def handle(client,client_address):
+    req = client.recv(8192)
+    res = 'HTTP/1.1 200 OK\r\n'
+    try:
+        path = req.split(" ",3)[1][1:]
+        data = path
+        if (path.find("?") == -1 and path == '') or path.find('?') == 0:
+            data = index(path)
+            res = res+'Content-Type: text/html\r\n'
+        elif path.startswith("x"):
+            data = str(x(path))
+            res = res+'Content-Type: text/plain\r\n'
+        res = res+'\r\n'+data
+    except Exception as e:
+        res = res+str(e)#.replace('\n','<br>')
+    client.sendall(res)
+    client.close()
 def index(path):
     with open('index.html') as f:
         return f.read();
     return '@'
-
 def x(path):
     xt = path[2:].split('&')
     dt = dict()
@@ -36,19 +60,5 @@ listen_socket.listen(1)
 print 'Serving HTTP on port %s ...' % PORT
 while True:
     client, client_address = listen_socket.accept()
-    req = client.recv(8192)
-    res = 'HTTP/1.1 200 OK\r\n'
-    try:
-        path = req.split(" ",3)[1][1:]
-        data = path
-        if (path.find("?") == -1 and path == '') or path.find('?') == 0:
-            data = index(path)
-            res = res+'Content-Type: text/html\r\n'
-        elif path.startswith("x"):
-            data = str(x(path))
-            res = res+'Content-Type: text/plain\r\n'
-        res = res+'\r\n'+data
-    except Exception as e:
-        res = res+str(e)#.replace('\n','<br>')
-    client.sendall(res)
-    client.close()
+    c = Client(client,client_address)
+    c.start()
