@@ -28,7 +28,6 @@ def handle(self,client,client_address):
         elif path.startswith("x"):
             data = str(x(path))
             res = res+'Content-Type: text/plain\r\n'
-        res = res+'\r\n'+data
         elif path.startswith("ws"):
             self.ws = true
             return
