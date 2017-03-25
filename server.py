@@ -1,7 +1,6 @@
 # my test server
 
-import socket,sys
-import * from urllib
+import socket,sys,urllib
 import os,urlparse
 import argparse
 import requests,time,json
