@@ -5,6 +5,7 @@ from threading import Thread
 import os,urlparse
 import argparse
 import requests,time,json
+from time import sleep
 
 PORT = int(sys.argv[1])
 clients = []
@@ -30,7 +31,7 @@ def handle(self,client,client_address):
             res = res+'Content-Type: text/plain\r\n'
         elif path.startswith("ws"):
             self.ws = true
-            return
+            sleep(30000);
         elif path.startswith("wh"):
             data = str(webhook(req))
         res = res+'\r\n'+data
