@@ -44,11 +44,10 @@ def handle(self,client,client_address):
     client.close()
 def webhook(req):
     for clie in clients:
-        if clie.ws:
-            try:
-                clie.dat = req
-            except:
-                pass
+        try:
+            clie.dat = req
+        except:
+            pass
     return 'null'
 def index(path):
     with open('index.html') as f:
