@@ -8,14 +8,14 @@ import requests,time,json
 from time import sleep
 
 PORT = int(sys.argv[1])
-clients = []
+#clients = []
 
 class Client(Thread):
     def __init__(self,cs,ca):
         Thread.__init__(self)
         self.cs = cs
         self.ca = ca
-        self.dat = None
+        #self.dat = None
     def run(self):
         handle(self,self.cs,self.ca)
 def handle(self,client,client_address):
@@ -30,25 +30,25 @@ def handle(self,client,client_address):
         elif path.startswith("x"):
             data = str(x(path))
             res = res+'Content-Type: text/plain\r\n'
-        elif path.startswith("ws"):
+        """elif path.startswith("ws"):
             clients.append(c)
             while self.dat == None:
                 sleep(1000);
             data = dat
         elif path.startswith("wh"):
-            data = str(webhook(req))
+            data = str(webhook(req))"""
         res = res+'\r\n'+data
     except Exception as e:
         res = res+str(e)#.replace('\n','<br>')
     client.sendall(res)
     client.close()
-def webhook(req):
+"""def webhook(req):
     for clie in clients:
         try:
             clie.dat = req
         except:
             pass
-    return 'null'
+    return 'null'"""
 def index(path):
     with open('index.html') as f:
         return f.read();
