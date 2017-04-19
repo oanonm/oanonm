@@ -1,5 +1,4 @@
-# my test server
-
+# my test server 
 import socket,sys,urllib
 from threading import Thread
 import os,urlparse
@@ -62,7 +61,7 @@ def x(path):
         if len(dtz) == 2:
             dt[dtz[0]] = dtz[1]
     #return str(dt)
-    t = urllib.parse.unquote_plus(dt['t']);
+    t = dt['t'].replace('+', ' ')
     #return t+f
     dtx = {'from':'o3FoJ98UddRxIWNY\\/xlU3Q==','type':'text','text':str(t)};
     #return dtx
