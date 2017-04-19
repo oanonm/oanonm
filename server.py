@@ -53,6 +53,7 @@ def index(path):
     with open('index.html') as f:
         return f.read();
     return '@'
+
 def x(path):
     xt = path[2:].split('&')
     dt = dict()
@@ -61,13 +62,13 @@ def x(path):
         if len(dtz) == 2:
             dt[dtz[0]] = dtz[1]
     #return str(dt)
-    t = dt['t'].replace('+', ' ')
+    t = urllib.parse.unquote_plus(dt['t']);
     #return t+f
-    dtx = {'receiver':'xPHRz\\/B\\/dcLfMYb4JMjc8g==','sender':{'name':dt['f']},'type':'text','text':str(t)};
+    dtx = {'from':'o3FoJ98UddRxIWNY\\/xlU3Q==','type':'text','text':str(t)};
     #return dtx
     headers = {'X-Viber-Auth-Token':os.environ['X-Viber-Auth-Token']}
     #return headers
-    res = requests.post('https://chatapi.viber.com/pa/send_message',data=json.dumps(dtx),headers=headers)
+    res = requests.post('https://chatapi.viber.com/pa/post',data=json.dumps(dtx),headers=headers)
     return res.json();
 
 listen_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
