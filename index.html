@@ -4,65 +4,7 @@
 <title>Hi! 😍</title>
 </head>
 <body>
-<div id="log"></div>
-<script>
-var logdiv = document.getElementById("log");
-console.log2 = console.log;
-console.log = function()
-{
-var txt = Array.prototype.slice.call(arguments);
-logdiv.innerHTML += "<span style=\"color:darkgreen;\">"+txt.join(" ")+"</span><br>";
-console.log2(txt);
-}
-console.err2 = console.err;
-console.err = function()
-{
-var txt = Array.prototype.slice.call(arguments);
-logdiv.innerHTML += "<span style=\"color:red;\">"+txt.join(" ")+"</span><br>";
-console.err2(txt);
-}
-console.warn2 = console.warn;
-console.warn = function()
-{
-var txt = Array.prototype.slice.call(arguments);
-logdiv.innerHTML += "<span style=\"color:purple;\">"+txt.join(" ")+"</span><br>";
-console.warn2(txt);
-}
-var log = console.log;
-/*function get(url,cbf)
-{
-var req = new XMLHttpRequest();
-req.open("GET",url,true);
-req.onreadystatechange = function()
-{
-if(req.readyState == 4)
-cbf(req);
-}
-req.send(null);
-}
-function cb(req)
-{
-if(req==null)
-{
-log("Hi!");
-get("http://fb0.herokuapp.com/ws",cb);
-}
-else
-{
-if(req.responseText.length == 0)
-{
-setTimeout("cb(req);",5000);
-}
-else
-{
-get("http://fb0.herokuapp.com/ws",cb);
-}
-}
-}
-setTimeout("cb();",1000);*/
-</script>
 <form action="/x">
-from: <input type="text" name="f" value="Nadeen"><br>
 msg:  <input type="text" name="t"><br>
 <input type="submit"><br>
 </form>
